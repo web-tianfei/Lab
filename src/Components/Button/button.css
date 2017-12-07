@@ -1,0 +1,27 @@
+
+.button4>button.button6>button{
+    height: 40px;  
+}
+
+.button6>img,.button4>img{
+    position: absolute;
+    right: 55px;
+    top:9px;
+    position: absolute;
+    right: 55px;
+    color: white;
+}
+
+.button6>span,.button4>span{
+    position: absolute;
+    color: white;
+    top:9px;
+    z-index: 1;
+    width: 40px;
+    right: 66px;
+    position: absolute;
+    right: 66px;
+    color: white;
+    z-index: 10;
+}
+.button6,.button4{position: relative}

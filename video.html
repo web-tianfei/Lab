@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+
+<head>
+	<title>h5 multi ppvison</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<style>
+		body {
+			overflow: hidden;
+			/* text-align: center; */
+			background: bisque;
+			padding: 0;
+			margin: 0;
+			width:500px;
+		}
+
+		#map {
+			width: 95vw;
+			height: 50px;
+			margin: auto;
+			/*水平居中*/
+		}
+
+		#ppv_container {
+			width: 100%;
+			height: 100%;
+			margin: auto;
+			/*水平居中*/
+			position: absolute;
+		}
+
+		#ppv {
+			position: relative;
+			/*作为内部子元素的定位基准*/
+			width: 100%;
+			height: 100%;
+			background: transparent;
+			/*background-color:#ffff00;*/
+			/* 子水平居中 flex layout*/
+			display: -webkit-flex;
+			/* Safari */
+			display: flex;
+			justify-content: center;
+		}
+
+		.ppv_toolbar {
+			position: absolute;
+			/*在ppv内部定位*/
+			width: 100%;
+			line-height: 50px;
+			/* text-align: center; */
+			background-color: #ebebeb;
+			border:1px solid gainsboro;
+		}
+
+		.ppv_button {
+			vertical-align: middle;
+			height: 32px;
+			background-color: transparent;
+			margin-left: 10px;
+		}
+
+		.ppv_button:hover {
+			background-color: lightgray;
+		}
+
+		#history_container {
+			position: absolute;
+			/*在ppv内部定位*/
+			width: 100%;
+			height: 100%;
+			/* 子垂直居中 flex layout*/
+			display: -webkit-flex;
+			/* Safari */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#history {}
+
+		.history_item {
+			height: 128px;
+			margin: 10px;
+		}
+
+		.history_item:hover {
+			border: 1px solid #00F;
+		}
+
+		#lrs {
+			font-size: 12px;
+		}
+
+		.lrs_item {
+			margin: 0 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<script type="text/javascript" src="./thirdParty/jquery-3.1.1.min.js"></script>
+
+	<script type="text/javascript" src="./thirdParty/ppv/js/PPV.min.js"></script>
+
+	<!-- <div id="map"></div>
+		<div id="lrs">
+			<h3 id="lrs_tip" class="lrs_item">LRS</h3>
+			<select id="road" class="lrs_item"></select>			
+			<select id="node" class="lrs_item"></select>			
+			<input id="adv" class="lrs_item" value="0"></input>
+			<button id ="bt_lrs_locate" class="lrs_item">lrs_locate</button>
+		</div> -->
+	<div id="ppv_container">
+		<div id="ppv">
+			<div id="history_container">
+			</div>
+			<div class="ppv_toolbar" id="ppv_toolbar">
+				<img class="ppv_button" src="assets/播放1.png" title="播放" onmouseup="event.stopPropagation(); ppv.play()"></img>
+				<img class="ppv_button" src="assets/停止.png" title="暂停" onmouseup="event.stopPropagation(); ppv.stop()"></img>
+				<img class="ppv_button" src="assets/经纬坐标.png" title="查询坐标" onmouseup="event.stopPropagation(); ppv.setTool(Tool.measurePoint)"></img>
+				<img class="ppv_button" src="assets/图层-5.png" title="测量长度" onmouseup="event.stopPropagation(); ppv.setTool(Tool.measureLength)"></img>
+				<img class="ppv_button" src="assets/图层-7.png" title="测量面积" onmouseup="event.stopPropagation(); ppv.setTool(Tool.measureArea)"></img>
+				<img class="ppv_button" src="assets/图层-8-拷贝.png" title="测量垂距" onmouseup="event.stopPropagation(); ppv.setTool(Tool.measureZ)"></img>
+				<img class="ppv_button" src="assets/图层-9-拷贝.png" title="测量立面" onmouseup="event.stopPropagation(); ppv.setTool(Tool.measureFacade)"></img>
+				<img class="ppv_button" src="assets/图层-10-拷贝.png" title="测量角度" onmouseup="event.stopPropagation(); ppv.setTool(Tool.measureAngle)"></img>
+				<img class="ppv_button" src="assets/图层-11-拷贝.png" title="测量坡度" onmouseup="event.stopPropagation(); ppv.setTool(Tool.measureSlope)"></img>
+				<!-- <img class="ppv_button" src="assets/经纬坐标.png" title="创建点" onmouseup="event.stopPropagation(); ppv.setTool(Tool.createPoint)"></img> -->
+				<img class="ppv_button" src="assets/画笔.png" title="创建线" onmouseup="event.stopPropagation(); ppv.setTool(Tool.createPolyline)"></img>
+				<img class="ppv_button" src="assets/多边形-拷贝.png" title="创建面" onmouseup="event.stopPropagation(); ppv.setTool(Tool.createPolygon)"></img>
+				<img class="ppv_button" src="assets/选择对象.png" title="选择对象" onmouseup="event.stopPropagation(); ppv.setTool(Tool.pick)"></img>
+				<img class="ppv_button" src="assets/删除1.png" title="删除选中对象" onmouseup="event.stopPropagation(); ppv.setTool(Tool.remove)"></img>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		var userKey = "6MaPPMsBGdgxUqCVULFACSyXlnFENs7GaQSnJfin";
+		var lrs_use_php = false;
+		var lrs_server = 'http://192.168.4.210:8011/PPVserver.asmx';
+
+		// 2 ppvision服务地址
+		var ppv_server = "http://192.168.4.210:8011/PPVServer.asmx";//
+		//
+		// 访问类型
+		// 3:imaj, 4:streetview, 0:ppv, -1:php
+		var device_type = 3;
+		//
+		var params = {};
+		const search = window.location.href.split('?')[1];
+		if (search) {
+			const values = search.split('&');
+			for (const param of values) {
+				const temp = param.split('=');
+				params[temp[0]] = temp[1];
+			}
+		}
+		var init_pos = [params.lon ? params.lon : 80.138932, params.lat ? params.lat : 31.936255];
+
+
+		// 1 构造PPV对象，参数是容器div的id
+		var ppv = new PPV("ppv");
+		console.log(ppv.getVersion());
+
+		// 2 ppvision服务地址
+		ppv.setServer(ppv_server);
+
+		// 初始化位置
+		if (init_pos != null)
+			//实景定位
+			ppv.locate(device_type, init_pos[0], init_pos[1], userKey);
+
+		//
+		ppv.setPref({
+			//bgcolor:0x000000,//'rgb(255,255,255)',
+			bgcolor: 'rgb(255,128,255)',
+			fullView: FullMode.trans,//照片是否填满div，不管是否会被裁剪
+			enableArrow: true,
+			enableHistory: true,
+			scope: 500,//可视范围
+			thumb: 'Small',//缩略图尺寸，可选'Middle'，缺省'Middle'
+			magnifier: {
+				size: 256,
+				zoom: 5.0,
+				fix: false,//是否启动放大镜后，固定位置不变。另一个方式是，放大镜随鼠标移动
+			},
+			key: {
+				play: 32,		//播放	space		
+				fforward: 33,	//快进	page up 
+				fbackward: 34,	//快退	page down 
+				forward: 38,		//前进	up
+				backward: 40,	//后退	down
+				fullscreen: 120,	//全屏	f9
+			},
+			label: {
+				fontface: '微软雅黑',	//字体
+				fontsize: 15,			//字高			
+				textColor: '#000000',	//文字颜色
+				borderThickness: 1,		//边框线宽，如果取0值，将禁用边框
+				borderFillet: 0,			//边框圆角
+				borderColor: 'rgba(0,0,0,0.8)',				//边框颜色
+				backgroundColor: 'rgba(255,255,255,0.8)',	//背景颜色
+			},
+		});
+
+
+		// 3 事件响应	
+		ppv.onLocate = function (event) {
+			if (event.state == LocateState.busy)
+				alert('busy');
+		}
+		ppv.onPosition = function (event) {
+			var lon = event.lon;
+			var lat = event.lat;
+			var heading = event.next.heading;
+			var xx = 0;
+
+			//定位地图
+			// console.log();
+			parent.abc(lon, lat,heading);
+			// if (typeof(map)!="undefined")
+			// {
+			// 	// g_coord = L.latLng(lat,lon);
+			// 	map.panTo(g_coord);
+			// 	eyeMarker.setLatLng(g_coord);
+			// }
+			//定位LRS
+			var radius = 100;//米
+			if (lrs_use_php) {
+				$.get("ppv/php/lrs_search.php", { lon: lon, lat: lat, radius: radius }, function (ret) {
+					//$.get("http://localhost:4047/lrs_search",{ lon: lon, lat:lat, radius:radius }, function(ret){
+					if (ret != '')
+						$("#lrs_tip").text(ret);
+					else
+						$("#lrs_tip").text('LRS');
+
+				});
+			}
+			else {
+				$.postJSON(
+					lrs_server + "/LrsSearch",
+					{ lon: lon, lat: lat, radius: radius },
+					function (ret) {
+						if (ret.d != '')
+							$("#lrs_tip").text(ret.d);
+						else
+							$("#lrs_tip").text('LRS');
+					},
+					function error(x, e) {
+						$("#lrs_tip").text('LRS');
+					}
+				);
+			}
+			//
+			ppv.needsUpdate = true;
+
+			//
+			if (event.back) {
+				backID = event.back.id;
+				$('#back').css({ visibility: 'visible' });
+			} else {
+				$('#back').css({ visibility: 'hidden' });
+			}
+		};
+		ppv.onEye = function (event) {
+			var heading = event.heading;
+			var fovx = event.fovx;
+			//旋转视点
+			if (typeof (eyeMarker) != "undefined" && typeof (g_coord) != "undefined") {
+				eyeMarker.setAngle(heading);
+			}
+		};
+		var fid = 0;
+		//创建要素
+		ppv.onFeatureCreate = function (event) {
+			var fe = event;
+
+			// 模拟，自增fid				
+			fid++;
+			fe.fid = fid;
+			fe.name = "我是" + fe.geometry.type + fid;
+			//fe.toGround = 0;//距离地面的高度
+
+			// 1 添加到gis窗口
+			// layerFeature.addData(fe);				
+
+			//2 添加到PPVision，这样设计是为了让用户有机会编辑它的id，以及选择图层
+			//图层要提前准备好
+			var type = fe.geometry.type;
+			if (type.indexOf("Point") >= 0) {
+				ppv.addFeature(layerPoint, fe);
+			}
+			else if (type.indexOf("LineString") >= 0) {
+				ppv.addFeature(layerLine, fe);
+			}
+			else if (type.indexOf("Polygon") >= 0) {
+				//fe.toGround = 0;//距离地面的高度
+				ppv.addFeature(layerPoly, fe);
+			}
+		}
+		ppv.onFeatureSelect = function (event) {
+			var fid = event.fid;
+		}
+		ppv.onFeatureRemove = function (event) {
+			var fid = event.fid;
+		}
+		ppv.onMeasure = function (event) {
+			var e = event;
+		}
+		ppv.onTool = function (event) {
+			//if (event.tool == Tool.play)
+			//	alert('play');
+			var e = event;
+		}
+
+		//
+		//LRS
+		// 4 添加默认图层
+		var layerPointDef = {
+			name: "路灯",
+			type: "Point",//Point, Line, Polygon 三种类型，并非强约束
+			color: 0x00ff00,//
+			opacity: 1.0,
+			//fixSize:true,
+			size: 40,
+			fontSize: 15,
+			//icon:"icon/创建点.png",
+		};
+		var layerPointDef2 = {
+			name: "路灯",
+			type: "Point",//Point, Line, Polygon 三种类型，并非强约束
+			color: 0xffff00,//
+			opacity: 0.5,
+			size: 40,
+			fontSize: 15,
+			icon: "icon/创建点.png",
+		};
+		var layerLineDef = {
+			name: "分道线",
+			type: "Line",//Point, Line, Polygon 三种类型，并非强约束
+			color: "rgb(0,255,0)",//
+			opacity: 1,
+			lineWidth: 4,//windows平台只支持lineWidth=1
+			fontSize: 15,
+		};
+		var layerPolyDef = {
+			name: "箭头",
+			type: "Polygon",//Point, Line, Polygon 三种类型，并非强约束
+			color: 'skyblue',//
+			opacity: 0.5,
+			lineWidth: 4,
+			fontSize: 15,
+		};
+		layerPoint = ppv.addLayer(layerPointDef);
+		layerLine = ppv.addLayer(layerLineDef);
+		layerPoly = ppv.addLayer(layerPolyDef);
+
+		var pointDef =
+			{
+				"type": "Feature",
+				"fid": 1234,
+				"name": "灯杆",
+				"toGround": 0,
+				"geometry": {
+					"type": "Point",
+					"coordinates":
+					[
+						115.49844086262348,
+						25.830122620184483,
+						190.5693443243893
+					]
+				}
+			};
+		ppv.addFeature(layerPoint, pointDef);
+		// 查询lrs_road
+
+		// 每次导入新的LRS图层之后，需要调用这个接口，计算线参考里程数据，之后，线参考系统才可以正常工作
+		function lrs_build_mileage() {
+			/*
+			alert('请耐心等待，速度约为：200个顶点/秒');
+			$.get("http://localhost:4047/lrs_build_mileage", function(ret){
+				alert(ret);
+			});	
+			*/
+		}
+
+
+
+
+
+
+
+			//
+			// leaflet
+			//
+	</script>
+
+</body>
+
+</html>

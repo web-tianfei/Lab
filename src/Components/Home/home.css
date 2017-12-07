@@ -1,0 +1,54 @@
+.home-main{background: #f2f2f2;position: relative;min-height: 1000px;}
+header{width:100%;height:50px;color:white;line-height: 50px;font-size: 12px;position: absolute;}
+header img{width:25px;margin-top: 13px; margin-left: 10px;}
+header span{font-size:14px;}
+header a{float: right;font-size: 14px;color: white;padding-left:5px;}
+.register{padding-right: 10px;display: none;}
+.userpng{float: right;width: 20px;margin-top: 15px;display: none}
+.homephone-land{display: none}
+nav{width:100%;height: 145px;}
+nav img{height:145px;    width: 100%;}
+.user-home{padding-left: 5px;}
+.global-enter{width: 160px;
+    height: 15px;
+    border: 1px solid white;
+    /*border-image: linear-gradient(to right, red , blue) 1 1;*/
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translate(-89px);
+    color: white;
+    font-size: 16px;
+    line-height: 15px;
+    text-align: center;    border-radius: 20px;
+        /*border: 0px solid transparent;*/
+    /*background: linear-gradient(orange, violet);*/
+    /*background-clip: padding-box;*/
+    padding: 10px;
+    /*box-shadow:0 1px 1px #6eda9f, inset 0 0 3px #60ceca;*/
+}
+.go-global{width: 280px;height: 50px;border: 2px solid white;position: absolute;top: 120px;left: 50%;transform: translate(-140px); z-index: 1;color: white;line-height: 50px;font-size: 24px;text-align: center;}
+.theme-tab{height:70px;font-size: 13px;background: white;padding: 5px 15px;}
+.theme-tab li{height:30px;float: left;line-height: 37px;text-align: center;    padding: 0px 10px 0px 0px;}
+.theme-tab li:first-child{color: #009999;}
+.content-main{width: 100%; max-width: 1425px;margin: 0 auto;padding-bottom: 30px;}
+.home-footer{width:100%;height: 30px;    font-size: 13px;background: #353f42;line-height: 30px;text-align: center;color: white;position: absolute;bottom: 0px;margin-top:20px;}
+/*专题列表*/
+.themes-li{width:44%;height: 270px;background:white;font-size: 12px;color: #8a8a8a;line-height: 35px;    display: inline-block;}
+.themes-li:hover{box-shadow: 0 0 15px 2px #8a8a8a;}
+.themes-li:nth-child(n){margin: 4%;}
+.themes-li:nth-child(2n){margin: 4%;margin-left: 0%;}
+
+.themes-li > img{width:100%;}
+.themes-li > div{padding-left: 10px;}
+.themes-li-title{font-size: 14px;color: black;line-height: 30px;}
+.themes-li-lettertitle{font-size: 14px;line-height: 30px;    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;}
+.themes-li-foot{border-top: 1px solid #d2d2d2;padding-right: 10px;}
+.themes-li-foot img{width: 20px;height:20px;margin-top: 9px;}
+.fr{float: right;}
+.themes-li-descdesc{    overflow: hidden;
+    white-space: nowrap;
+    width: 150px;
+    text-overflow: ellipsis;}

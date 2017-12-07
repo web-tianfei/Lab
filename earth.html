@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>image layer</title>
+    <link rel="stylesheet" type="text/css" href="./css/reset.css" />
+</head>
+
+<body>
+    <div id="container"></div>
+	<div id="app"></div>
+
+<script src="./thirdParty/GeoVis-0.8.4/GeoVis.js"></script>
+<script src="./build/Global.js"></script>
+<script>
+window.onload = function() {
+    const userid = getCookie('id');
+    if (userid != undefined && userid != null && userid !== "") {
+        initEarth();
+    } else {
+        window.location.href = './index.html';
+    }
+};
+
+function getCookie(c_name) {
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=")
+        if (c_start !== -1) {
+            c_start = c_start + c_name.length + 1
+            c_end = document.cookie.indexOf(";", c_start)
+            if (c_end === -1) c_end = document.cookie.length;
+            return unescape(document.cookie.substring(c_start, c_end))
+        }
+    }
+    return "";
+}
+
+function initEarth() {
+    var app = new Global.Viewer('container', options);
+}
+</script>
+</body>
+</html>

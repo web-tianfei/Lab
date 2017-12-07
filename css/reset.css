@@ -1,0 +1,26 @@
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p, em, img, strong, i,
+dl, dt, dd, ol, ul, li,
+form, label,
+table, caption, tbody, tfoot, thead, tr, th, td {font-family:'微软雅黑';margin: 0;padding: 0;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+img { border: none; vertical-align: top; }
+a{ text-decoration: none; outline: none;display: block;text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);/* 去掉链接触摸高亮 */}
+ul { list-style: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+input,button,textarea,select,optgroup,option{ font-size: 100%; font: inherit; background: none; border: none; outline: none;}
+h1,h2,h3,h4,h5,h6,em,i,b{font-weight:normal;font-style:normal;}
+/*img{width: 100%;display: block;margin: 0 auto;}*/
+
+input[type="button"], input[type="text"], input[type="submit"], input[type="reset"]{-webkit-appearance:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+textarea {-webkit-appearance:none;} 
+/*清除浮动代码*/ 
+.clearfloat:after{
+	display:block;
+	clear:both;
+	content:"";
+	visibility:hidden;
+	height:0
+} 
+.clearfloat{
+	zoom:1
+}

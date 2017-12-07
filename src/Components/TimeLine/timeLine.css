@@ -1,0 +1,35 @@
+.time-line{width: 385px;height: 45px;background: rgba(67,67,67,0.9);position: absolute;bottom: 0px;left: 50%;transform: translate(-193px);color: white;font-size: 15px;z-index: 10;}
+.time-unvisible{display: none;}
+.time-line > img:first-child{margin: 17px 15px 0px 15px;}
+.time-line>span{line-height: 45px;}
+.center-main{width: 220px;height: 100%; position: absolute;top: 0px;left: 100px;}
+.center-main p{position: absolute;left: 90px;top:28px;font-size: 12px;}
+.fr{float: right;margin-right: 20px}
+/*1：去除默认样式*/
+input[type=range] {
+    -webkit-appearance: none;
+    width: 200px;
+    border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+    margin-top: 19px;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+/*给滑动轨道定义样式*/
+input[type=range]::-webkit-slider-runnable-track {
+    height: 5px;
+    /*轨道内置阴影效果*/
+    box-shadow: 0 1px 1px #def3f8, inset 0 5px 1px #9E9DA1; 
+}
+input[type=range]:focus {
+    outline: none;
+}
+/*给滑块(thumb)添加样式*/
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+    background: #009999; 
+    border-radius: 50%; /*外观设置为圆形*/
+}

@@ -1,0 +1,30 @@
+.theme-title{
+	width:230px;
+	height:40px;
+	position: absolute;
+	top: 80px;
+	left:100px;
+	background: #ebebeb;
+	border:1px solid #b8b8b8;
+	border-left-width: 0px;
+	color: #009999;
+	    box-sizing: border-box;
+	    border-top-right-radius:5px;
+	    border-bottom-right-radius:5px;
+	    line-height: 40px;
+	    text-align: center;
+	    font-size: 18px;
+}
+.theme-desc{
+	position: absolute;
+    top: 121px;
+    left: 40px;
+    background: #ebebeb;
+    width: 278px;
+    border:1px solid #b8b8b8;
+    border-radius: 5px;
+    line-height: 30px;
+    text-indent: 30px;
+    font-size: 15px;
+    padding: 5px;
+}

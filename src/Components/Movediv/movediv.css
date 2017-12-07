@@ -1,0 +1,11 @@
+.movediv{
+	
+     position: absolute;width: 330px;height: auto; border-radius: 4px;cursor: move;right: 100px;
+    bottom: 50px;z-index: 999;
+}
+@media screen and (max-width: 1366px) {
+    .movediv{
+		width: 210px;
+		right: 55px;
+	}
+}

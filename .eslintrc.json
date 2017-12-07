@@ -1,0 +1,74 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "globals": {
+    "Babel": true,
+    "React": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "camelcase": "off",
+    "indent": [
+      "error",
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "strict": [
+      "off",
+      "global"
+    ],
+    "dot-notation": "warn",
+    "no-unused-vars": "warn",
+    "no-nested-ternary": "off",
+    "object-shorthand": "off",
+    "no-bitwise": "off",
+    "no-mixed-operators": "off",
+    "no-plusplus": "off",
+    "guard-for-in": "off",
+    "curly": "off",
+    "no-trailing-spaces": "off",
+    "comma-dangle": "off",
+    "one-var": "off",
+    "one-var-declaration-per-line": "off",
+    "func-names": "off",
+    "semi": "off",
+    "spaced-comment": "off",
+    "class-methods-use-this": "off",
+    "no-case-declarations": "off",
+    "padded-blocks": "off",
+    "global-require": "off",
+    "max-len": "off",
+	"quotes": "off",
+	"no-tabs": "off",
+    "import/no-unresolved": "off",
+	"import/extensions": "off",
+    "no-underscore-dangle": "off",
+    "no-new-func": "off",
+    "no-param-reassign": "off",
+    "react/prefer-stateless-function": "off",
+    "react/no-multi-comp": "off",
+    "react/jsx-no-bind": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-first-prop-new-line": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-boolean-value": "off",
+    "react/prop-types": "off",
+	"react/self-closing-comp": "off",
+	"jsx-a11y/no-static-element-interactions": "off",
+	"jsx-a11y/img-has-alt": "off",
+	"jsx-a11y/label-has-for": "off",
+    "no-restricted-syntax": "off",
+    "linebreak-style": "off",
+    "no-throw-literal": "off",
+    "object-curly-spacing": "off"
+  }
+}

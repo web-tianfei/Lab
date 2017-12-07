@@ -1,0 +1,38 @@
+.land-container{width:100%;height:1000px;background:url('./src/assets/landgb.png');}
+.land-header{width:100%;margin:0 auto;line-height: 50px;color: white;padding-top: 100px;}
+.land-header img{width:30px;margin-top: 11px;margin-left: 200px;}
+.land-header span{font-size:22px;}
+.land-header p{float: right;}
+.land-header a{float: right;font-size: 16px;color: white;padding:0px 200px 0px 0px;}
+.title-tab p:nth-child(1){color:#009999;}
+.title-tab{width:420px;height:45px;line-height: 55px;color: white;padding-left: 50px;}
+.title-tab p{float: left;font-size: 22px;padding-left: 30px;}
+article{width:420px;height:620px;float: right;margin:150px 240px 0px 0px;cursor: pointer;}
+article img{width:30px;margin:7px 10px;}
+article input{width:360px;height:100%;font-size: 16px;}
+article > div{height:140px;}
+.input-chunk{width:420px;height:45px;background: white;border-radius: 3px;margin-top:25px;}
+.msg-test{width:260px;float: left;}
+.msg-test input{width:200px;}
+.msg-chunk p{width:150px;height:45px;background:red;float: right;margin-top:25px;border-radius: 3px;background: linear-gradient(to right, #6eda9f, #60ceca);line-height: 45px;text-align:center;color: white;font-size:18px;}
+.on-land{width:420px;height:45px;line-height: 45px;text-align:center;color: white;font-size: 24px;background: linear-gradient(to right, #6eda9f, #60ceca);border-radius: 3px;}
+.foot-tab{width:420px;height:65px;line-height: 55px;color: white;padding-left: 120px;color:#959595;font-size:16px;}
+.foot-tab p{float: left;padding-left: 10px;}
+.foot-tab p:nth-child(2){color:#aeaeae}
+.foot-split{height: 30px}
+.foot-split div{float: left;width:120px;height:1px;background: #6e787d;}
+.foot-split p{float: left;line-height: 1px;font-size: 18px;color: white;padding: 0px 8px;}
+.foot-icon{padding-left: 110px;}
+.foot-icon img{width: 45px;}
+.input-chunk input{padding: 0}
+.landlogo-img{width: 680px;margin-left: 200px;}
+@media screen and (max-width: 1366px) {
+	.land-container{height: 800px;}
+    .landlogo-img{width: 420px;}
+    article{margin-top: 40px;margin-right: 185px;height: 400px;}
+}
+@media screen and (max-width: 900px) {
+	.land-container{height: 1210px;}
+	.land-header img{margin-left: 180px;}
+	.land-header a{padding-right: 185px;}
+}

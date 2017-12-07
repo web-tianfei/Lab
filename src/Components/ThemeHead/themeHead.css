@@ -1,0 +1,23 @@
+.themes-header{width: 100%;height: 50px;background: #353f42;line-height: 50px;font-size: 16px;color: white;   position: absolute;
+    z-index: 11;}
+.themes-header a {color: white;display: inline-block;}
+.themes-header a img{width: 25px; margin:12px 4px 0px 15px;}
+.themes-header p{float: left;}
+.tools-ul{float: right;margin-right: 30px}
+.tools-ul li{float: left;margin-left: 45px;}
+.tools-ul li img{float: left;margin: 18px 5px 0px 0px}
+
+.tool-slide{    float: right;
+    width: 30px;
+    height: 26px;border:1px solid #ccc;
+    border-color: #353F42;
+    background: none;border-radius: 3px;
+    margin: 14px 19px 0px 0px;}
+.tool-slide img{width: 18px;   padding: 6px;}
+.themes-goHome{display: inline-block;height: 100%;    line-height: 43px;}
+.themes-goHome p{
+	float: none;
+	height: 10px;
+}
+.themes-goHome p:first-child{font-size: 15px;color: #069BCC;}
+.themes-goHome p:last-child{font-size: 12px;    line-height: 50px;}
