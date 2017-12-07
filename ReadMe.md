@@ -1,3 +1,6 @@
+项目架构
+	react react-router webpack es6 babel  
+
 1. 启动项目
 npm install 安装项目依赖
 npm start 启动项目 既可在本地查看
