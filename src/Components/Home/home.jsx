@@ -110,21 +110,21 @@ class Allthemes extends Component {
 class Home extends Component{
     render(){
         return(
-			<div className={styles["home-main"]}>		
-				<header>
-					<img src="./src/assets/logo.png" />
-					<span>GV Lab</span>			
-					<a href="#" className={styles["register"]}>注册</a>
-					<Link to="/land" className={styles['homephone-land']}>登陆</Link>	
-					<img className={styles["userpng"]} src="./src/assets/user.png" />						
-				</header>
-				<nav>
-					<img src="./src/assets/indexbg.png" />
-				</nav>	
-				<Link to="/smartGPhone" className={styles["global-enter"]}>GV Lab</Link>						
-				<Allthemes></Allthemes>
-				<div className={styles["home-footer"]}>航天星图科技(北京)有限公司版权所有</div>
-			</div>
+		<div className={styles["home-main"]}>		
+			<header>
+				<img src="./src/assets/logo.png" />
+				<span>GV Lab</span>			
+				<a href="#" className={styles["register"]}>注册</a>
+				<Link to="/land" className={styles['homephone-land']}>登陆</Link>	
+				<img className={styles["userpng"]} src="./src/assets/user.png" />						
+			</header>
+			<nav>
+				<img src="./src/assets/indexbg.png" />
+			</nav>	
+			<Link to="/smartGPhone" className={styles["global-enter"]}>GV Lab</Link>						
+			<Allthemes></Allthemes>
+			<div className={styles["home-footer"]}>航天星图科技(北京)有限公司版权所有</div>
+		</div>
         )
     }
 }
