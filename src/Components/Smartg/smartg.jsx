@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-// import createFragment from 'react-addons-create-fragment';
 import styles from './smartg.css';
 import Data from '../../data.js';
 
