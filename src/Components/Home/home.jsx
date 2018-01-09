@@ -44,28 +44,8 @@ class Allthemes extends Component {
         };  
     }
     componentWillMount(){
-  //   	const re = this;
-		// let toke = 'feaQuaIKtUxemo8maVp4q8AO+qJj0qN2h1TZdKvLHCogm5zgLiTc1oXdQq8/akUbfqm/2c/njmGOp3QqTweoctXYV17RC9myFmeqt2wnxfHJMcUPQ3jNMAm4wY+im/PmoHGHknyzmzoj/ftsR3YnzeqLL+cIOywHCo/AuU5YyDA=';
-		// fetch("http://192.168.48.3:8808/metadata-service/metadata/manage/query", {
-		// 	  method: "POST",
-		// 	  headers: {
-		// 	    'Content-Type': 'application/x-www-form-urlencoded'
-		// 	  },
-		// 	  body: "dataType=LAB0&token="+toke+""
-		// 	}).then(function(response) {
-		//   		response.json().then( (dataval) => {
-		//   			re.setState({
-		//   				data : dataval,
-		//   				allData : dataval ,
-		//   				isReady : true
-		//   			})
-		//   		})
-		// });
     }	
-    componentDidMount(){
-    	// console.log(this.state.data)
-    }
-	tabTheme(msg,event){
+    tabTheme(msg,event){
 		let len = document.querySelectorAll(`.${styles['theme-tab']} > ${'li'}`).length;
 		for(let i =0;i<len;i++){
 			// document.querySelectorAll(`.${styles['theme-tab']} > ${'li'}`)[i].style.background = 'white';
@@ -78,73 +58,24 @@ class Allthemes extends Component {
 				this.setState({data:Data.details1})
 			;break;
 			case '学校分布' :				
-				// let arr = [];
-				// this.state.allData.map( (val) => {
-				// 	if(val.subject == '学校分布'){
-				// 		arr.push(val)
-				// 	}
-				// })
-				// this.setState({data:arr})
 				this.setState({data:Data.details2})
 			;break;
 			case '人口普查' :
-				// let arr2 = [];
-				// this.state.allData.map( (val) => {
-				// 	if(val.subject == '人口普查'){
-				// 		arr2.push(val)
-				// 	}
-				// })
-				// this.setState({data:arr2})
 				this.setState({data:Data.details3})
 			;break;
 			case '交通' :
-				// let arr3 = [];
-				// this.state.allData.map( (val) => {
-				// 	if(val.subject == '交通'){
-				// 		arr3.push(val)
-				// 	}
-				// })
-				// this.setState({data:arr3})
 				this.setState({data:Data.details4})
 			;break;
 			case '自然灾害' :
-				// let arr4 = [];
-				// this.state.allData.map( (val) => {
-				// 	if(val.subject == '自然灾害'){
-				// 		arr4.push(val)
-				// 	}
-				// })
-				// this.setState({data:arr4})
 				this.setState({data:Data.details5})
 			;break;
 			case '社会焦点' :
-				// let arr5 = [];
-				// this.state.allData.map( (val) => {
-				// 	if(val.subject == '社会焦点'){
-				// 		arr5.push(val)
-				// 	}
-				// })
-				// this.setState({data:arr5})
 				this.setState({data:Data.details6})
 			;break;
 			case '智慧城市' :
-				// let arr6 = [];
-				// this.state.allData.map( (val) => {
-				// 	if(val.subject == '智慧城市'){
-				// 		arr6.push(val)
-				// 	}
-				// })
-				// this.setState({data:arr6})
 				this.setState({data:Data.details7})
 			;break;
 			case '街景' :
-				// let arr7 = [];
-				// this.state.allData.map( (val) => {
-				// 	if(val.subject == '街景'){
-				// 		arr7.push(val)
-				// 	}
-				// })
-				// this.setState({data:arr7})
 				this.setState({data:Data.details8})
 			;break;			
 			default:alert("组件不存在");
