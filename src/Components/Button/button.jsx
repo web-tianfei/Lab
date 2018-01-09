@@ -23,15 +23,6 @@ class Button extends Component {
             { altShow: false },
         )
     }
-    onclick() {
-
-        
-        // let timer = setTimeout(
-        //     (this.setState(
-        //         { pShow: false },
-        //     )),5000
-        // )
-    }
     render() {
         let a;
         this.state.name = this.state.altShow ? this.props.buttonName : '';
