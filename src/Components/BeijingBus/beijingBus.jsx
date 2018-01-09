@@ -3,12 +3,12 @@ import { render } from 'react-dom'
 
 class GlobalSeismic extends Component{
 	constructor(props){
-        super(props)
-        this.state = {
-            currentObj1 : '',
-            currentObj2 : '',
+        	super(props)
+       		this.state = {
+            		currentObj1 : '',
+            		currentObj2 : '',
+        	}
         }
-    }
 	componentDidMount(){
 		//视角跳转至中国
         window.earth.camera.flyTo({
